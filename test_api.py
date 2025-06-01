@@ -20,9 +20,11 @@ def test_api_status():
 def test_upload_csv(table_name, file_path):
     """Prueba la carga de un archivo CSV"""
     print(f"\n=== Probando carga de CSV para {table_name} ===")
-    with open(file_path, 'rb') as file:
-        files = {'file': (os.path.basename(file_path), file, 'text/csv')}
-        response = requests.post(f"{API_URL}/upload/{table_name}", files=files)
+    response = requests.post(
+        f"{API_URL}/upload-from-path/{table_name}",
+        json={"file_path": file_path},
+        headers={"Content-Type": "application/json"}
+    )
     
     print(f"Respuesta: {response.status_code}")
     print(json.dumps(response.json(), indent=2))
