@@ -1,24 +1,31 @@
 """
 Configuración principal de la API REST (versión alternativa sin python-multipart)
 """
-from fastapi import FastAPI, HTTPException, Body
+# Incluir nueva libreria con rutas
+from fastapi import FastAPI, UploadFile, File, HTTPException, Body
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import os
+import tempfile
 import json
+import shutil
 from typing import List, Dict, Any
 
 # Importar módulos propios
 from app.database.create_db import create_database
 from app.database.db_manager import DatabaseManager
 from app.utils.csv_processor import parse_csv_file, validate_batch_size
+from app.routes.sql_routes import router as sql_router
 
 # Crear la aplicación FastAPI
 app = FastAPI(
     title="API de Migración CSV",
-    description="API REST para migrar datos desde archivos CSV a una base de datos SQL",
-    version="1.0.0"
+    description="API REST para migrar datos desde archivos CSV a una base de datos SQL y realizar consultas analíticas",
+    version="2.0.0"
 )
+
+# Asociamos el router de SQL
+app.include_router(sql_router)
 
 # Configurar CORS
 app.add_middleware(

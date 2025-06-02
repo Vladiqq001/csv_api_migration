@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\VladimirPerez\Documents\Personal\Test\API REST - CSV a SQL\venv"
+VIRTUAL_ENV="C:\Users\VladimirPerez\Documents\Personal\Test\csv_api_migration\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

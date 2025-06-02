@@ -1,14 +1,22 @@
 import sqlite3
 import os
 
-def create_database():
+def create_database(db_path=None):
     """
     Crea la base de datos SQLite con las tablas necesarias para la migración de datos.
     Si la base de datos ya existe, la función no hace nada.
+
+    Args:
+        db_path: Ruta opcional para el archivo de base de datos. Si es None,
+                se usa la ruta predeterminada.
+    
+    Returns:
+        Ruta al archivo de base de datos.
     """
     # Obtener la ruta del directorio actual
-    db_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(db_dir, 'migration.db')
+    if db_path is None:
+        db_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(db_dir, 'migration.db')
     
     # Verificar si la base de datos ya existe
     if os.path.exists(db_path):

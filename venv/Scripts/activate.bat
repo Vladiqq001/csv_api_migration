@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\VladimirPerez\Documents\Personal\Test\API REST - CSV a SQL\venv
+set VIRTUAL_ENV=C:\Users\VladimirPerez\Documents\Personal\Test\csv_api_migration\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
