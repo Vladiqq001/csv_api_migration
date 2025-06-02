@@ -115,7 +115,7 @@ pip install -r requirements.txt
 
 ```bash
 # Versión completa unificada
-uvicorn app.main_updated:app --reload
+uvicorn app.main_updated:app --host 127.0.0.1 --port 8001
 ```
 
 ### Ejecutar Pruebas
@@ -131,7 +131,7 @@ pytest -v tests/
 docker build -t csv-api-migration .
 
 # Ejecutar contenedor
-docker run -p 8000:8000 csv-api-migration
+docker run -p 8001:8001 csv-api-migration
 ```
 
 ## Ejemplos de Uso
